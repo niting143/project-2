@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Facebook,
   Instagram,
@@ -9,6 +8,13 @@ import {
 } from "lucide-react";
 
 export default function Footer() {
+  const handleScroll = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="container mx-auto px-4">
@@ -16,9 +22,9 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">SB</span>
+                <span className="text-white font-bold text-xl">RS</span>
               </div>
-              <span className="text-xl font-bold">FixShower&BalconyLeaks</span>
+              <span className="text-xl font-bold">Re-Seal Shower</span>
             </div>
             <p className="text-gray-400 mb-6">
               Australia's trusted shower resealing and waterproofing
@@ -89,21 +95,23 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-6">Company</h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleScroll("about")}
+                  className="text-gray-400 hover:text-white transition-colors bg-transparent border-none outline-none cursor-pointer p-0"
                 >
                   About Us
-                </a>
+                </button>
               </li>
 
               <li>
-                <a
-                  href="#testimonials"
-                  className="text-gray-400 hover:text-white transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleScroll("testimonials")}
+                  className="text-gray-400 hover:text-white transition-colors bg-transparent border-none outline-none cursor-pointer p-0"
                 >
                   Testimonials
-                </a>
+                </button>
               </li>
             </ul>
           </div>

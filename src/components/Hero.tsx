@@ -1,8 +1,14 @@
-import React from "react";
-import { CheckCircle, Star, Award } from "lucide-react";
+import { CheckCircle, Star } from "lucide-react";
 import videoSrc from "../assets/headerVideo.mp4"; // Adjust the path as necessary
 
 export default function Hero() {
+  const handleFreeQuoteClick = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="home"
@@ -32,7 +38,10 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors font-semibold shadow-lg">
+              <button
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors font-semibold shadow-lg"
+                onClick={handleFreeQuoteClick}
+              >
                 Get Free Quote
               </button>
               <a href="tel:0401716402">

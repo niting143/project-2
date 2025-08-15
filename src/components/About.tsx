@@ -1,38 +1,14 @@
 import {
   Award,
   Users,
-  Clock,
   Shield,
   CheckCircle,
-  Star,
-  Bold,
+  
 } from "lucide-react";
 import imgs from "../assets/epoxygrout.png";
 
 export default function About() {
-  const stats = [
-    {
-      number: "10+",
-      label: "Years Experience",
-      icon: <Clock className="w-6 h-6" />,
-    },
-    {
-      number: "200+",
-      label: "Projects Completed",
-      icon: <Award className="w-6 h-6" />,
-    },
-    {
-      number: "100%",
-      label: "Customer Satisfaction",
-      icon: <Star className="w-6 h-6" />,
-    },
-    {
-      number: "24/7",
-      label: "Emergency Service",
-      icon: <Shield className="w-6 h-6" />,
-    },
-  ];
-
+ 
   const certifications = [
     "Licensed Waterproofing Technician",
     "Australian Building Codes Board Certified",
@@ -40,6 +16,13 @@ export default function About() {
     "WorkSafe Compliance Certified",
     "Environmental Safety Standards",
   ];
+
+  const handleFreeQuoteClick = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section id="about" className="py-20 bg-white">
@@ -182,11 +165,12 @@ export default function About() {
               waterproofing needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#contact">
-                <button className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold">
-                  Get Free Quote
-                </button>
-              </a>
+              <button
+                className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
+                onClick={handleFreeQuoteClick}
+              >
+                Get Free Quote
+              </button>
               <a href="tel:0401716402">
                 <button className="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition-colors font-semibold">
                   Call 0401 716 402

@@ -1,8 +1,20 @@
-import React, { useState } from "react";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, Phone } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleNavClick = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMenuOpen(false); // close mobile menu if open
+  };
+
+  const handleQuoteClick = () => {
+    handleNavClick("contact");
+  };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -19,36 +31,41 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="#home"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+            <button
+              type="button"
+              onClick={() => handleNavClick("home")}
+              className="text-gray-700 hover:text-blue-600 transition-colors bg-transparent border-none outline-none cursor-pointer"
             >
               Home
-            </a>
-            <a
-              href="#services"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNavClick("services")}
+              className="text-gray-700 hover:text-blue-600 transition-colors bg-transparent border-none outline-none cursor-pointer"
             >
               Services
-            </a>
-            <a
-              href="#gallery"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNavClick("gallery")}
+              className="text-gray-700 hover:text-blue-600 transition-colors bg-transparent border-none outline-none cursor-pointer"
             >
               Gallery
-            </a>
-            <a
-              href="#testimonials"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNavClick("testimonials")}
+              className="text-gray-700 hover:text-blue-600 transition-colors bg-transparent border-none outline-none cursor-pointer"
             >
               Reviews
-            </a>
-            <a
-              href="#contact"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNavClick("contact")}
+              className="text-gray-700 hover:text-blue-600 transition-colors bg-transparent border-none outline-none cursor-pointer"
             >
               Contact
-            </a>
+            </button>
           </nav>
 
           {/* Contact Info */}
@@ -57,11 +74,12 @@ export default function Header() {
               <Phone className="w-4 h-4 text-blue-600" />
               <span className="text-gray-700">0401 716 402</span>
             </div>
-            <a href="#contact">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                Get Quote
-              </button>
-            </a>
+            <button
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              onClick={handleQuoteClick}
+            >
+              Get Quote
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -81,41 +99,49 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t">
             <div className="flex flex-col space-y-3">
-              <a
-                href="#home"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+              <button
+                type="button"
+                onClick={() => handleNavClick("home")}
+                className="text-gray-700 hover:text-blue-600 transition-colors bg-transparent border-none outline-none cursor-pointer text-left"
               >
                 Home
-              </a>
-              <a
-                href="#services"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavClick("services")}
+                className="text-gray-700 hover:text-blue-600 transition-colors bg-transparent border-none outline-none cursor-pointer text-left"
               >
                 Services
-              </a>
-              <a
-                href="#gallery"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavClick("gallery")}
+                className="text-gray-700 hover:text-blue-600 transition-colors bg-transparent border-none outline-none cursor-pointer text-left"
               >
                 Gallery
-              </a>
-              <a
-                href="#testimonials"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavClick("testimonials")}
+                className="text-gray-700 hover:text-blue-600 transition-colors bg-transparent border-none outline-none cursor-pointer text-left"
               >
                 Reviews
-              </a>
-              <a
-                href="#contact"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavClick("contact")}
+                className="text-gray-700 hover:text-blue-600 transition-colors bg-transparent border-none outline-none cursor-pointer text-left"
               >
                 Contact
-              </a>
+              </button>
               <div className="flex items-center space-x-2 pt-2">
                 <Phone className="w-4 h-4 text-blue-600" />
                 <span className="text-gray-700">0401 716 402</span>
               </div>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors w-full">
+              <button
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors w-full"
+                onClick={handleQuoteClick}
+              >
                 Get Quote
               </button>
             </div>
