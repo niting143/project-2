@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Send, Loader2 } from "lucide-react";
 import emailjs from "@emailjs/browser";
-import { EMAILJS_CONFIG, QUOTE_EMAILS, getEmailTemplateParams, isEmailJSConfigured } from "../config/emailjs";
+import {
+  EMAILJS_CONFIG,
+  QUOTE_EMAILS,
+  getEmailTemplateParams,
+  isEmailJSConfigured,
+} from "../config/emailjs";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,12 +17,14 @@ export default function Contact() {
     message: "",
   });
 
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const validateForm = () => {
-    const newErrors: {[key: string]: string} = {};
+    const newErrors: { [key: string]: string } = {};
 
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
@@ -51,7 +58,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -64,7 +71,7 @@ export default function Contact() {
       const emailPromises = QUOTE_EMAILS.map(async (email) => {
         const templateParams = getEmailTemplateParams(formData);
         templateParams.to_email = email;
-        
+
         return emailjs.send(
           EMAILJS_CONFIG.SERVICE_ID,
           EMAILJS_CONFIG.TEMPLATE_ID,
@@ -103,7 +110,7 @@ export default function Contact() {
       ...formData,
       [name]: value,
     });
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors({
@@ -148,9 +155,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Email</div>
-                  <div className="text-gray-600">
-                    fixshowerandbalconyleaks@gmail.com
-                  </div>
+                  <div className="text-gray-600">resealshower@gmail.com</div>
                 </div>
               </div>
 
@@ -207,7 +212,12 @@ export default function Contact() {
               {!isEmailJSConfigured() && (
                 <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <p className="text-yellow-800 text-sm">
-                    ⚠️ EmailJS is not configured. Please follow the setup guide in <code className="bg-yellow-100 px-1 rounded">EMAILJS_SETUP.md</code> to enable email functionality.
+                    ⚠️ EmailJS is not configured. Please follow the setup guide
+                    in{" "}
+                    <code className="bg-yellow-100 px-1 rounded">
+                      EMAILJS_SETUP.md
+                    </code>{" "}
+                    to enable email functionality.
                   </p>
                 </div>
               )}
@@ -285,7 +295,9 @@ export default function Contact() {
                     <option value="emergency">Emergency Service</option>
                   </select>
                   {errors.service && (
-                    <p className="text-red-500 text-xs mt-1">{errors.service}</p>
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.service}
+                    </p>
                   )}
                 </div>
               </div>
@@ -307,7 +319,13 @@ export default function Contact() {
                   {errors.message && (
                     <p className="text-red-500 text-xs">{errors.message}</p>
                   )}
-                  <p className={`text-xs ml-auto ${formData.message.length < 10 ? 'text-gray-400' : 'text-green-600'}`}>
+                  <p
+                    className={`text-xs ml-auto ${
+                      formData.message.length < 10
+                        ? "text-gray-400"
+                        : "text-green-600"
+                    }`}
+                  >
                     {formData.message.length}/10 characters minimum
                   </p>
                 </div>
@@ -338,7 +356,8 @@ export default function Contact() {
               {submitStatus === "success" && (
                 <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
                   <p className="text-green-800 text-center">
-                    Thank you! Your message has been sent successfully. We'll get back to you soon with a quote.
+                    Thank you! Your message has been sent successfully. We'll
+                    get back to you soon with a quote.
                   </p>
                 </div>
               )}
@@ -346,7 +365,8 @@ export default function Contact() {
               {submitStatus === "error" && (
                 <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                   <p className="text-red-800 text-center">
-                    Sorry, there was an error sending your message. Please try again or contact us directly.
+                    Sorry, there was an error sending your message. Please try
+                    again or contact us directly.
                   </p>
                 </div>
               )}

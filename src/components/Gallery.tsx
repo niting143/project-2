@@ -69,7 +69,8 @@ export default function Gallery() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Work</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            See the difference our professional resealing services make
+            Experience the difference our expert resealing and waterproofing
+            services bring to every shower and balcony.
           </p>
         </div>
 

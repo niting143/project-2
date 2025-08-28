@@ -125,9 +125,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-blue-600" />
-                <span className="text-gray-400">
-                  fixshowerandbalconyleaks@gmail.com
-                </span>
+                <span className="text-gray-400">resealshower@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-blue-600" />
@@ -147,8 +145,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <p className="text-gray-400 text-sm">
-              © 2024 FixShower&BalconyLeaks. All rights reserved. | Licensed &
-              Insured
+              © 2024 Re-Seal Showers. All rights reserved. | Licensed & Insured
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a

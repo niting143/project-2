@@ -36,7 +36,7 @@ export default function Services() {
       description: "Stop balcony leakages with replacing normal grout to epoxy",
       features: [
         "Complementary inject megabond into the drummy tiles without replacing them",
-        "Complementary sealer to the tiles(If required)",
+        "Complementary sealer to the tiles (If required)",
         "Complementary visible repair to the crack tiles",
         "Special discount for pensioners",
         "25-year warranty",
