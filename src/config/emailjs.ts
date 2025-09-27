@@ -10,7 +10,7 @@ export const EMAILJS_CONFIG = {
 // Email addresses to send quotes to
 export const QUOTE_EMAILS = [
   "nitingautam15@gmail.com",
-  "fixshowerandbalconyleaks@gmail.com",
+  "resealshower@gmail.com",
 ];
 
 // Email template variables
@@ -32,7 +32,9 @@ export const getEmailTemplateParams = (formData: {
 
 // Helper function to check if EmailJS is properly configured
 export const isEmailJSConfigured = () => {
-  return EMAILJS_CONFIG.SERVICE_ID !== "service_id" && 
-         EMAILJS_CONFIG.TEMPLATE_ID !== "template_id" && 
-         EMAILJS_CONFIG.PUBLIC_KEY !== "public_key";
+  return (
+    EMAILJS_CONFIG.SERVICE_ID !== "service_id" &&
+    EMAILJS_CONFIG.TEMPLATE_ID !== "template_id" &&
+    EMAILJS_CONFIG.PUBLIC_KEY !== "public_key"
+  );
 };
