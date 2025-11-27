@@ -1,39 +1,47 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Services from "./components/Services";
-import Gallery from "./components/Gallery";
-import Testimonials from "./components/Testimonials";
-import Blog from "./components/Blog";
-import BlogDetail from "./components/BlogDetail";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import About from "./components/About";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Gallery from "./pages/Gallery";
+import Testimonials from "./pages/Testimonials";
+import Contact from "./pages/Contact";
+import BlogPage from "./pages/BlogPage";
+import BlogDetail from "./components/BlogDetail";
+import { useEffect } from "react";
 
-function HomePage() {
-  return (
-    <div className="min-h-screen">
-      <Header />
-      <Hero />
-      <About />
-      <Services />
-      <Gallery />
-      <Testimonials />
-      <Blog />
-      <Contact />
-      <Footer />
-    </div>
-  );
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/blog/:id" element={<BlogDetail />} />
-      </Routes>
+      <ScrollToTop />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/testimonials" element={<Testimonials />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }

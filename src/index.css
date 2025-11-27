@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-charcoal-800 antialiased bg-sand-50;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-ocean-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-ocean-800 text-white px-8 py-3 rounded-full hover:bg-ocean-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:-translate-y-0.5 tracking-wide;
+  }
+  .btn-secondary {
+    @apply bg-white text-ocean-900 border-2 border-ocean-100 px-8 py-3 rounded-full hover:bg-ocean-50 hover:border-ocean-200 transition-all duration-300 font-medium tracking-wide;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+}

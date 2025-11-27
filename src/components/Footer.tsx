@@ -1,172 +1,115 @@
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
-  const handleScroll = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <footer className="bg-gray-900 text-white py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8">
+    <footer className="bg-ocean-900 text-white pt-20 pb-10">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">RS</span>
+              <div className="w-10 h-10 bg-eucalyptus-500 rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-xl font-display">RS</span>
               </div>
-              <span className="text-xl font-bold">Re-Seal Shower</span>
+              <span className="text-2xl font-bold font-display tracking-tight">Re-Seal Shower</span>
             </div>
-            <p className="text-gray-400 mb-6">
-              Australia's trusted shower resealing and waterproofing
-              specialists. Professional service with industry-leading
-              warranties.
+            <p className="text-ocean-200 mb-8 leading-relaxed font-light">
+              Sydney's trusted experts in shower and balcony waterproofing. 
+              Restoring beauty and functionality to your home.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://www.facebook.com/share/1LM5wmeZDc/"
-                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+                href="#"
+                className="w-10 h-10 rounded-full bg-ocean-800 flex items-center justify-center hover:bg-eucalyptus-500 transition-colors duration-300"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="https://www.instagram.com/fix_shower_leaks?utm_source=qr&igsh=MTg1bjlndmdycDYyZA=="
-                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+                href="#"
+                className="w-10 h-10 rounded-full bg-ocean-800 flex items-center justify-center hover:bg-eucalyptus-500 transition-colors duration-300"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://wa.me/message/2F3L2LRWMVK2O1"
-                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+                href="#"
+                className="w-10 h-10 rounded-full bg-ocean-800 flex items-center justify-center hover:bg-eucalyptus-500 transition-colors duration-300"
               >
-                <Twitter className="w-5 h-5" />
+                <Phone className="w-5 h-5" />
               </a>
             </div>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Services</h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Shower Resealing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Waterproofing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Maintenance & Repair
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Emergency Service
-                </a>
-              </li>
+            <h3 className="text-lg font-bold mb-6 font-display text-sand-200">Services</h3>
+            <ul className="space-y-4">
+              {["Shower Repairs", "Balcony Sealing", "Grout Restoration", "Waterproofing"].map((item) => (
+                <li key={item}>
+                  <Link
+                    to="/services"
+                    className="text-ocean-200 hover:text-eucalyptus-400 transition-colors flex items-center group"
+                  >
+                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-all -ml-6 group-hover:ml-0" />
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Company */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Company</h3>
-            <ul className="space-y-3">
-              <li>
-                <button
-                  type="button"
-                  onClick={() => handleScroll("about")}
-                  className="text-gray-400 hover:text-white transition-colors bg-transparent border-none outline-none cursor-pointer p-0"
-                >
-                  About Us
-                </button>
-              </li>
-
-              <li>
-                <button
-                  type="button"
-                  onClick={() => handleScroll("testimonials")}
-                  className="text-gray-400 hover:text-white transition-colors bg-transparent border-none outline-none cursor-pointer p-0"
-                >
-                  Testimonials
-                </button>
-              </li>
+            <h3 className="text-lg font-bold mb-6 font-display text-sand-200">Company</h3>
+            <ul className="space-y-4">
+              {[
+                { name: "About Us", path: "/about" },
+                { name: "Our Work", path: "/gallery" },
+                { name: "Reviews", path: "/testimonials" },
+                { name: "Contact", path: "/contact" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-ocean-200 hover:text-eucalyptus-400 transition-colors flex items-center group"
+                  >
+                     <ArrowRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-all -ml-6 group-hover:ml-0" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Contact Info</h3>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-blue-600" />
-                <span className="text-gray-400">0401 716 402</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-blue-600" />
-                <span className="text-gray-400">resealshower@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-blue-600" />
-                <span className="text-gray-400">Serving Across Perth</span>
-              </div>
-            </div>
-
-            <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-              <h4 className="font-semibold mb-2">Emergency Service</h4>
-              <p className="text-sm text-gray-400">
-                Available 24/7 for urgent repairs
-              </p>
-            </div>
+            <h3 className="text-lg font-bold mb-6 font-display text-sand-200">Contact Us</h3>
+            <ul className="space-y-6">
+              <li className="flex items-start space-x-4">
+                <MapPin className="w-6 h-6 text-eucalyptus-500 shrink-0 mt-1" />
+                <span className="text-ocean-200">
+                  123 George Street,
+                  <br />
+                  Sydney, NSW 2000
+                </span>
+              </li>
+              <li className="flex items-center space-x-4">
+                <Phone className="w-6 h-6 text-eucalyptus-500 shrink-0" />
+                <span className="text-ocean-200">0401 716 402</span>
+              </li>
+              <li className="flex items-center space-x-4">
+                <Mail className="w-6 h-6 text-eucalyptus-500 shrink-0" />
+                <span className="text-ocean-200">info@resealshower.com.au</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <p className="text-gray-400 text-sm">
-              © 2024 Re-Seal Showers. All rights reserved. | Licensed & Insured
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                Terms of Service
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                Sitemap
-              </a>
-            </div>
+        <div className="border-t border-ocean-800 pt-8 flex flex-col md:flex-row justify-between items-center text-ocean-400 text-sm">
+          <p>&copy; {new Date().getFullYear()} Re-Seal Shower. All rights reserved.</p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
