@@ -34,7 +34,7 @@ export function useGoogleReviews(): UseGoogleReviewsResult {
 
     const loadGoogleScript = () => {
       // Check if script is already loaded
-      // @ts-ignore
+      // @ts-expect-error - Google Maps API might not be typed
       if (window.google && window.google.maps && window.google.maps.places) {
         fetchReviews();
         return;
@@ -62,7 +62,7 @@ export function useGoogleReviews(): UseGoogleReviewsResult {
 
     const fetchReviews = () => {
       try {
-        // @ts-ignore
+        // @ts-expect-error - Google Maps API might not be typed
         const google = window.google;
         if (!google || !google.maps || !google.maps.places) {
            throw new Error("Google Maps API not available");
@@ -76,6 +76,7 @@ export function useGoogleReviews(): UseGoogleReviewsResult {
           fields: ["reviews"], 
         };
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         service.getDetails(request, (place: any, status: any) => {
           if (
             status === google.maps.places.PlacesServiceStatus.OK &&
@@ -88,6 +89,7 @@ export function useGoogleReviews(): UseGoogleReviewsResult {
           }
           setLoading(false);
         });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (err: any) {
         setError(err.message);
         setLoading(false);

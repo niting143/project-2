@@ -1,4 +1,4 @@
-import { Award, Users, Shield, CheckCircle, ArrowRight, MapPin, Star } from "lucide-react";
+import { Award, Users, Shield, CheckCircle, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import imgs from "../assets/epoxygrout.png";
 

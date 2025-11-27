@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { ArrowLeft, Calendar, Clock, User, Tag, ArrowRight, Share2 } from "lucide-react";
+import { useEffect } from "react";
+import { Calendar, Clock, User, Tag, ArrowRight, Share2 } from "lucide-react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 export default function BlogDetail() {

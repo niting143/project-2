@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ArrowRight, MapPin, Plus, Filter, Wallet } from "lucide-react";
+import { useState } from "react";
+import { MapPin, Plus, Filter, Wallet } from "lucide-react";
 import { Link } from "react-router-dom";
 import GalleryModal from "./GalleryModal";
 
@@ -12,7 +12,16 @@ import mainFloorImage from "../assets/mainFloor2.jpeg";
 
 const categories = ["All", "Bathroom", "Balcony", "Living Area"];
 
-const projects = [
+interface Project {
+  title: string;
+  location: string;
+  description: string;
+  beforeAfter: string;
+  category: string;
+  outcome: string;
+}
+
+const projects: Project[] = [
   {
     title: "Shower Leak Repair",
     location: "Scarborough, WA",
@@ -57,10 +66,10 @@ const projects = [
 
 export default function Gallery() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const handleOpenModal = (project) => {
+  const handleOpenModal = (project: Project) => {
     setSelectedProject(project);
     setModalOpen(true);
   };

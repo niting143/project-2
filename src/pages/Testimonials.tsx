@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Star, Quote, MapPin, Loader2, ArrowRight } from "lucide-react";
 
 import { useGoogleReviews } from "../hooks/useGoogleReviews";
@@ -120,7 +119,7 @@ export default function Testimonials() {
                       <div className="flex items-center text-xs text-charcoal-400 mt-0.5">
                          {/* Google API doesn't usually return user location, so we show 'Local Guide' or generic text if real API is used, or fallback location if static */}
                         <MapPin className="w-3 h-3 mr-1" />
-                        {(review as any).location || "Perth, WA"} 
+                        {(review as { location?: string }).location || "Perth, WA"} 
                       </div>
                     </div>
                   </div>

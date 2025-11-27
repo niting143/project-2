@@ -3,7 +3,7 @@ import Services from '../components/Services';
 import GoogleReviews from '../components/GoogleReviews';
 import FAQ from '../components/FAQ';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, Clock, Droplets, CheckCircle, MapPin, Star, Calendar, User } from 'lucide-react';
+import { ArrowRight, Shield, Clock, Droplets, CheckCircle, MapPin, Star, Calendar } from 'lucide-react';
 
 // Using a high-quality placeholder that mimics a bright, modern Perth bathroom
 const WhyChooseUsImage = 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2000&auto=format&fit=crop';
@@ -297,7 +297,13 @@ export default function Home() {
 }
 
 // Sub-component for clean code
-function FeatureCard({ icon: Icon, title, desc }) {
+interface FeatureCardProps {
+  icon: React.ElementType;
+  title: string;
+  desc: string;
+}
+
+function FeatureCard({ icon: Icon, title, desc }: FeatureCardProps) {
   return (
     <div className="flex items-start p-4 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300 border border-transparent hover:border-sand-100 group">
       <div className="bg-eucalyptus-50 p-2.5 rounded-xl mr-4 group-hover:bg-eucalyptus-100 transition-colors">
